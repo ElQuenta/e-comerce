@@ -1,0 +1,20 @@
+/* Color Theme Swatches in Hex */
+.AMG-GT---Black-Series-CGI-Film-1-hex { color: #106173; }
+.AMG-GT---Black-Series-CGI-Film-2-hex { color: #8FD1D9; }
+.AMG-GT---Black-Series-CGI-Film-3-hex { color: #F29D52; }
+.AMG-GT---Black-Series-CGI-Film-4-hex { color: #D96E48; }
+.AMG-GT---Black-Series-CGI-Film-5-hex { color: #0D0D0D; }
+
+/* Color Theme Swatches in RGBA */
+.AMG-GT---Black-Series-CGI-Film-1-rgba { color: rgba(16, 96, 114, 1); }
+.AMG-GT---Black-Series-CGI-Film-2-rgba { color: rgba(143, 209, 216, 1); }
+.AMG-GT---Black-Series-CGI-Film-3-rgba { color: rgba(242, 156, 82, 1); }
+.AMG-GT---Black-Series-CGI-Film-4-rgba { color: rgba(216, 110, 71, 1); }
+.AMG-GT---Black-Series-CGI-Film-5-rgba { color: rgba(12, 12, 12, 1); }
+
+/* Color Theme Swatches in HSLA */
+.AMG-GT---Black-Series-CGI-Film-1-hsla { color: hsla(191, 75, 25, 1); }
+.AMG-GT---Black-Series-CGI-Film-2-hsla { color: hsla(185, 49, 70, 1); }
+.AMG-GT---Black-Series-CGI-Film-3-hsla { color: hsla(28, 86, 63, 1); }
+.AMG-GT---Black-Series-CGI-Film-4-hsla { color: hsla(16, 65, 56, 1); }
+.AMG-GT---Black-Series-CGI-Film-5-hsla { color: hsla(0, 0, 5, 1); }
