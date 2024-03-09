@@ -1,16 +1,38 @@
-.menu {
-    width: 100vw;
-    padding: 1em;
-    background-color: #0D0D0D;
-    position: fixed;
+body{
+    background-color: beige;
 }
 
-.events {
-    background: #16222A;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #3A6073, #16222A);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #3A6073, #16222A);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+.menu {
+    padding: 1em;
+    background-color: #0D0D0D;
+    text-align: right;
+}
+
+.content{
+    margin: 4em;
+}
+
+
+.product-img{
+    width: 200px;
+    height: 250px;
+}
+
+.user-button {
+    background-color: #D96E48;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 32px;
+    font-family: "Madimi One", sans-serif;
+}
+
+.user-button:hover {
+    background-color: #F29D52;
 }
