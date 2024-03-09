@@ -12,7 +12,9 @@
     background-color: white;
     border-radius: 16px;
     padding: 1em;
-    margin-bottom: 1rem;
+    width: 20%; /* Change this value to control the width of each product-card */
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .product-name {

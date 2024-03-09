@@ -1,0 +1,21 @@
+.product-image-wrapper {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image-wrapper img{
+    border-radius: 16px;
+}
+
+.product-image {
+    width: 80%;
+    height: auto;
+}
+
+.product-image-alter{
+    width: 20%;
+    height: auto;
+}
