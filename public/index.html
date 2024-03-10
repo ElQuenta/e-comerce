@@ -175,7 +175,36 @@
             </section>
         </div>
     </div>
-    
+    <div id="query1Results"></div>
+    <div id="query2Results"></div>
+
+    <script>
+        // Function to make AJAX request
+        function makeRequest(url, outputElementId) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Display the response
+                        document.getElementById(outputElementId).innerHTML = xhr.responseText;
+                    } else {
+                        // Handle errors
+                        console.error('Request failed: ' + xhr.status);
+                    }
+                }
+            };
+
+            // Open a GET request to the server
+            xhr.open('GET', url, true);
+            xhr.send();
+        }
+
+        // Call the function to make the requests when the page loads
+        window.onload = function () {
+            makeRequest('http://localhost:3000/categorias', 'query1Results');
+            makeRequest('http://localhost:3000/producto', 'query2Results');
+        };
+    </script>
 </body>
 
 </html>
