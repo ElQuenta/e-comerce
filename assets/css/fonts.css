@@ -35,3 +35,9 @@ input[type="number"] {
     border-bottom: solid #8FD1D9 2px;
     color: white;
 }
+
+.form-title{
+    font-family: "Roboto Mono", monospace;
+    text-align: center;
+    font-size: 2.5rem;
+}
