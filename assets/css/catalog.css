@@ -24,22 +24,10 @@
 
 .product-description {
     font-size: 0.9rem;
-    color: #666;
+    color: white;
     margin-bottom: 1rem;
 }
 
-.buy-button {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #F29D52;
-    color: white;
-    text-decoration: none;
-    border-radius: 16px;
-}
-
-.buy-button:hover{
-    background-color: #D96E48;
-}
 
 .product-img{
     height: 200px;

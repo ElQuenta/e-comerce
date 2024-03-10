@@ -22,7 +22,7 @@ body {
 }
 
 
-.product-img{
+.product-img {
     width: 200px;
     height: 250px;
 }
@@ -32,6 +32,7 @@ body {
     width: 48%;
     margin-bottom: 2rem;
 }
+
 .product-info-container {
     min-height: 400px;
     border-radius: 16px;
@@ -66,13 +67,27 @@ body {
     background-color: #F29D52;
 }
 
+.buy-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #F29D52;
+    color: white;
+    text-decoration: none;
+    border-radius: 16px;
+    font-family: "Madimi One", sans-serif;
+}
+
+.buy-button:hover {
+    background-color: #D96E48;
+}
+
 .logo {
     height: 50px;
     width: 100%;
 }
 
 
-.price-quantity-container {
+.order-quantity-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -87,13 +102,12 @@ body {
 
 .add-to-cart-button {
     padding: 0.75rem 2rem;
-    font-size: 1.2rem;
-    font-weight: bold;
     color: white;
     background-color: #D96E48;
     border: none;
-    border-radius: 16px;
+    border-radius: 32px;
     cursor: pointer;
+    font-family: "Madimi One", sans-serif;
 }
 
 .add-to-cart-button:hover {

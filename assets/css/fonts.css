@@ -2,6 +2,7 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    font-family: "Roboto Mono", monospace;
 }
 
 .product-description {
@@ -12,6 +13,7 @@
 
 
 .price {
+    color: white;
     font-size: 2rem;
     font-weight: bold;
 }
@@ -27,4 +29,9 @@ input[type="number"] {
     padding: 0.5rem;
     font-size: 1.2rem;
     text-align: center;
+}
+
+.title{
+    border-bottom: solid #8FD1D9 2px;
+    color: white;
 }
