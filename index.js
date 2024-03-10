@@ -1,26 +1,12 @@
-const {Client} = require ("pg");
+const db = require('./database');
 
-const obtenerCategorias = async() => {
+const obtenerCategorias = async () => {
+  await db.connect();
+  const result = await db.query("select * from categoria");
+  await db.end();
 
-const client = new Client({
-    user: 'root',
-    host: 'dpg-cnlv7ted3nmc73aqfagg-a.frankfurt-postgres.render.com',
-    database: 'ecomerce_p5fx',
-    password: 'pcUKq8GuBvYakVwb490odI8oOoR8rfwB',
-    port: 5432,
-    ssl: {
-        rejectUnauthorized: false,
-    },
-  })
-  
-await client.connect()
-const res = await client.query("select * from categoria")
-const result =res.rows 
-await client.end()
-
-return result;
+  return result;
 };
-
-obtenerCategorias().then((result) =>{
+obtenerCategorias().then((result) => {
   console.log(result);
 });
