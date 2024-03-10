@@ -4,13 +4,16 @@ const app = express();
 // Conexión a la base de datos
 const db = require('./database');
 
+app.use(express.static('public'));
+
 // Ruta para obtener categorías desde la base de datos
 app.get('/categorias', async (req, res) => {
   try {
     await db.connect();
     const result = await db.query('SELECT * FROM categoria');
+    console.log(result)
     await db.end();
-    res.json(result.rows);
+    res.json(result);
   } catch (error) {
     console.error('Error al obtener categorías:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -23,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
 });

@@ -20,6 +20,16 @@ class Database {
   }
 
   async connect() {
+    this.client = new Client({
+      user: 'root',
+      host: 'dpg-cnlv7ted3nmc73aqfagg-a.frankfurt-postgres.render.com',
+      database: 'ecomerce_p5fx',
+      password: 'pcUKq8GuBvYakVwb490odI8oOoR8rfwB',
+      port: 5432,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    });
     await this.client.connect();
   }
 
