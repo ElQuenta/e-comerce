@@ -7,6 +7,17 @@ const obtenerCategorias = async () => {
 
   return result;
 };
+
+const insertarUsuario = async (nombre, email, password) => {
+  await db.connect();
+  const result = await db.query();
+  await db.end();
+
+  return result;
+};
+
+document.getElementById('')
+
 obtenerCategorias().then((result) => {
   console.log(result);
 });
