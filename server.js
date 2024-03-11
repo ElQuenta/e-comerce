@@ -23,7 +23,7 @@ app.get('/categorias', async (req, res) => {
 
 app.get('/catalogo-perros', async (req, res) => {
   try {
-    const result = await db.query('SELECT nombre_producto, url FROM producto where id_categoria = 1');
+    const result = await db.query('SELECT id_producto, nombre_producto, url FROM producto where id_categoria = 1');
     console.log(result)
     res.json(result);
   } catch (error) {
@@ -33,7 +33,18 @@ app.get('/catalogo-perros', async (req, res) => {
 });
 app.get('/catalogo-gatos', async (req, res) => {
   try {
-    const result = await db.query('SELECT nombre_producto, url FROM producto where id_categoria = 2');
+    const result = await db.query('SELECT id_producto, nombre_producto, url FROM producto where id_categoria = 2');
+    console.log(result)
+    res.json(result);
+  } catch (error) {
+    console.error('Error al obtener categorías:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.get('/productos/:id', async (req, res) => {
+  const productId = req.params.id;
+  try {
+    const result = await db.query('SELECT * FROM producto where id_producto = '+productId);
     console.log(result)
     res.json(result);
   } catch (error) {

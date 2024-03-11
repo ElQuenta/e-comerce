@@ -59,12 +59,12 @@
                         // Create a card for each element in the query
                         for (var i = 0; i < data.length; i++) {
                             var card = `
-                                <div class="product-card">
+                                <div class="product-card" id="${data[i].id_producto}">
                                     <div class="product-name">${data[i].nombre_producto}</div>
                                     <div class="product-description">
                                         <img src="${data[i].url}" alt="" class="product-img">
                                     </div>
-                                    <a href="#" class="buy-button">buy now</a>
+                                    <a href="product.html?id=${data[i].id_producto}" class="buy-button">buy now</a>
                                 </div>
                             `;
 

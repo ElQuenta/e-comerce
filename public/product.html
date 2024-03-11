@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -30,45 +31,79 @@
                 </div>
             </div>
         </header>
-        <div class="content">
-            <div class="product-info-container">
+        <div class="content" id="query1Results">
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        console.log(id)
+        // Function to make AJAX request
+        function makeRequest(url, outputElementId) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Parse the JSON response
+                        var data = JSON.parse(xhr.responseText);
+
+                        // Create a card for each element in the query
+                        var card = `
+                        <div class="product-info-container">
                 <div class="product-image-wrapper">
                     <div>
-                        <img src="https://aratiendas.com/wp-content/uploads/2023/01/14401-7704269225091.jpg"
-                        alt="Product Image" class="product-image">
+                        <img src="${data[0].url}"
+                            alt="Product Image" class="product-image">
                     </div>
 
                     <div>
-                        <img src="https://aratiendas.com/wp-content/uploads/2023/01/14401-7704269225091.jpg"
+                        <img src="${data[0].url}"
                             alt="Product Image" class="product-image-alter">
-                        <img src="https://aratiendas.com/wp-content/uploads/2023/01/14401-7704269225091.jpg"
+                        <img src="${data[0].url2}"
                             alt="Product Image" class="product-image-alter">
                     </div>
                 </div>
                 <div class="product-info">
                     <div class="title">
-                        <h1 class="product-name">Product Name</h1>
+                        <h1 class="product-name">${data[0].nombre_producto}</h1>
                     </div>
                     <p class="product-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam luctus turpis porttitor urna
-                        imperdiet, non gravida odio fringilla. Curabitur at enim et arcu ultricies ultricies.
+                        ${data[0].descripcion}
                     </p>
                     <div class="price">
                         <i class="fa-solid fa-money-bill-wave"></i>
-                        <span class="product-price">19.99</span>
+                        <span class="product-price">${data[0].precio}</span>
                     </div>
                     <div class="order-quantity-container">
                         <div class="quantity-selector">
                             <label for="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                            <input type="number" id="quantity" name="quantity" min="1" value="1">
+                            <span>quedan ${data[0].stock} unidades</span>
                         </div>
                         <button class="add-to-cart-button">Add to Cart</button>
                     </div>
 
                 </div>
             </div>
-        </div>
-    </div>
+                            `;
+                        document.getElementById(outputElementId).innerHTML += card;
+                    } else {
+                        // Handle errors
+                        console.error('Request failed: ' + xhr.status);
+                    }
+                }
+            };
+
+            // Open a GET request to the server
+            xhr.open('GET', url, true);
+            xhr.send();
+        }
+
+        // Call the function to make the requests when the page loads
+        window.onload = function () {
+            makeRequest('http://localhost:3000/productos/'+id, 'query1Results');
+        };
+    </script>
 </body>
 
 </html>
