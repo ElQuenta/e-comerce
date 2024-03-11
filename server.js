@@ -43,7 +43,6 @@ app.get('/catalogo-gatos', async (req, res) => {
 });
 
 app.post("/users", async(req,res) => {
-  
   console.log(req.body);
   const { nombre, apellido, correoelectronico, contrasena} = req.body
   const query = `INSERT INTO usuario (nombre, apellido, contrasena, correoelectronico)
