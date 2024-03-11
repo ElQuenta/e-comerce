@@ -16,7 +16,19 @@ const insertarUsuario = async (nombre, email, password) => {
   return result;
 };
 
-document.getElementById('')
+document.getElementById('registrarseBtn').addEventListener('click', async()=>{
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+      await insertarUsuario(nombre, email, password);
+      alert('Usuario registrado correctamente');
+  } catch (error) {
+      console.error('Error al registrar usuario:', error);
+      alert('Error al registrar usuario');
+  }
+})
 
 obtenerCategorias().then((result) => {
   console.log(result);
