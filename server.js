@@ -12,10 +12,29 @@ app.use(bodyParser.json());
 // Ruta para obtener categorías desde la base de datos
 app.get('/categorias', async (req, res) => {
   try {
-    await db.connect();
     const result = await db.query('SELECT * FROM categoria');
     console.log(result)
-    await db.end();
+    res.json(result);
+  } catch (error) {
+    console.error('Error al obtener categorías:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/catalogo-perros', async (req, res) => {
+  try {
+    const result = await db.query('SELECT nombre_producto, url FROM producto where id_categoria = 1');
+    console.log(result)
+    res.json(result);
+  } catch (error) {
+    console.error('Error al obtener categorías:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.get('/catalogo-gatos', async (req, res) => {
+  try {
+    const result = await db.query('SELECT nombre_producto, url FROM producto where id_categoria = 2');
+    console.log(result)
     res.json(result);
   } catch (error) {
     console.error('Error al obtener categorías:', error);
