@@ -62,6 +62,21 @@ app.post("/users", async(req,res) => {
   res.status(201).json({ message: 'Usuario creado correctamente' });
 });
 
+app.post("/login", async(req,res) => {
+  const { email, password } = req.body;
+
+  // Realizar la verificación de las credenciales en la base de datos
+  const query = `SELECT * FROM usuario WHERE correoelectronico = '${email}' AND contrasena = '${password}'`;
+  const result = await db.query(query);
+
+  if (result.length > 0) {
+    res.status(200).json({ message: 'Inicio de sesión exitoso' });
+  } else {
+    res.status(401).json({ message: 'Credenciales inválidas' });
+  }
+});
+
+
 
 // Ruta para servir el archivo HTML
 app.get('/', (req, res) => {
