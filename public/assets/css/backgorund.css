@@ -34,7 +34,7 @@ body {
 }
 
 .product-info-container {
-    min-height: 400px;
+    min-height: 200px;
     border-radius: 16px;
     background: #16222A;
     /* fallback for old browsers */
