@@ -65,7 +65,8 @@
 
                     if (response.ok) {
                         alert('Inicio de sesión exitoso');
-                        window.location.replace("/index.html");
+                        const email = formData.get("email");
+                        window.location.replace(`/index.html?user=${email}`);
                     } else {
                         alert('Credenciales inválidas');
                     }

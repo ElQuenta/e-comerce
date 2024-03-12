@@ -55,6 +55,8 @@
                     if (xhr.status === 200) {
                         // Parse the JSON response
                         var data = JSON.parse(xhr.responseText);
+                        var urlParam = new URLSearchParams(window.location.search);
+                        var useremail = urlParams.get('user');
 
                         // Create a card for each element in the query
                         for (var i = 0; i < data.length; i++) {
@@ -64,7 +66,7 @@
                                     <div class="product-description">
                                         <img src="${data[i].url}" alt="" class="product-img">
                                     </div>
-                                    <a href="product.html?id=${data[i].id_producto}" class="buy-button">buy now</a>
+                                    <a href="product.html?id=${data[i].id_producto}&user=${useremail}" class="buy-button">buy now</a>
                                 </div>
                             `;
 
@@ -88,6 +90,18 @@
             makeRequest('http://localhost:3000/catalogo-perros', 'query1Results');
             makeRequest('http://localhost:3000/catalogo-gatos', 'query2Results');
         };
+    </script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user');
+        console.log(user)
+
+        const menuRight = document.querySelector('.menu-right');
+
+        if (user !== null && user !== "null") {
+            menuRight.style.display = 'none';
+        }
+
     </script>
 </body>
 
