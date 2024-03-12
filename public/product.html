@@ -28,8 +28,8 @@
                     </a>
                 </div>
                 <div class="menu-right">
-                    <a href="" class="user-button">Sign Up</a>
-                    <a href="" class="user-button">Log In</a>
+                    <a href="signup.html" class="user-button">Sign Up</a>
+                    <a href="login.html" class="user-button">Log In</a>
                 </div>
             </div>
         </header>
@@ -94,7 +94,9 @@
                         // Call the function to add the user email to the card
                         addUserEmailToCard(user);
                         document.querySelector('.content').addEventListener('click', function (event) {
-                            if (event.target.id === 'addToCart') {
+                            if(parametros.user == null || parametros.user == "null" || user == "undefined"){
+                                alert('debes de loguearte priemero');
+                            }else if (event.target.id === 'addToCart' ) {
                                 addToCart();
                             }
                         });
@@ -107,7 +109,7 @@
 
             // Open a GET request to the server
             xhr.open('GET', url, true);
-            xhr.send();            
+            xhr.send();
         }
 
         // Function to add the user email to the card
@@ -150,15 +152,15 @@
 
         const menuRight = document.querySelector('.menu-right');
 
-        if (parametros.user !== null && parametros.user !== "null") {
+        if (parametros.user !== null && parametros.user !== "null" && user != "undefined") {
             menuRight.style.display = 'none';
             const logoLink = document.getElementById("backtohome");
             logoLink.href = "index.html?user=" + parametros.user;
         }
 
-                // Función para hacer la solicitud de añadir al carrito
-                async function addToCart() {
-                    console.log("addToCart function called");
+        // Función para hacer la solicitud de añadir al carrito
+        async function addToCart() {
+            console.log("addToCart function called");
             const quantity = document.getElementById('quantity').value;
             const response = await fetch(`http://localhost:3000/addToCart/${id}`, {
                 method: 'POST',
