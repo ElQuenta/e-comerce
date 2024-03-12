@@ -93,7 +93,7 @@
 
                         // Call the function to add the user email to the card
                         addUserEmailToCard(user);
-                        document.querySelector('.content').addEventListener('click', function (event) {
+                        document.querySelector('.add-to-cart-button').addEventListener('click', function (event) {
                             if(parametros.user == null || parametros.user == "null" || user == "undefined"){
                                 alert('Debes de loguearte primero');
                             }else if (event.target.id === 'addToCart' ) {
