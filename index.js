@@ -33,3 +33,4 @@ document.getElementById('registrarseBtn').addEventListener('click', async()=>{
 obtenerCategorias().then((result) => {
   console.log(result);
 });
+ //Creo que sin todo este .js funciona

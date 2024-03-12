@@ -77,6 +77,25 @@ app.post("/login", async(req,res) => {
 });
 
 
+app.post("/addToCart/:id", async (req, res) => {
+  const productId = parseInt(req.params.id);
+  const { quantity } = parseInt(req.body);
+
+  try {
+      const product = await db.query('SELECT * FROM producto WHERE id_producto = $1', [productId]);
+      if (!product || product[0].stock < quantity) {
+          return res.status(400).json({ message: 'No hay suficiente stock' });
+      }
+
+      // Restar la cantidad del stock en la base de datos
+      await db.query('UPDATE producto SET stock = stock - $1 WHERE id_producto = $2', [(quantity), productId]);
+
+      res.status(200).json({ message: 'Producto añadido al carrito' });
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ message: 'Error al procesar la solicitud' });
+  }
+});
 
 // Ruta para servir el archivo HTML
 app.get('/', (req, res) => {

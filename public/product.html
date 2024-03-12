@@ -80,13 +80,18 @@
                             <input type="number" id="quantity" name="quantity" min="1" value="1">
                             <span>quedan ${data[0].stock} unidades</span>
                         </div>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button id="addToCart" class="add-to-cart-button">Add to Cart</button>
                     </div>
 
                 </div>
             </div>
                             `;
                         document.getElementById(outputElementId).innerHTML += card;
+                        document.querySelector('.content').addEventListener('click', function (event) {
+                            if (event.target.id === 'addToCart') {
+                                addToCart();
+                            }
+                        });
                     } else {
                         // Handle errors
                         console.error('Request failed: ' + xhr.status);
@@ -96,13 +101,32 @@
 
             // Open a GET request to the server
             xhr.open('GET', url, true);
-            xhr.send();
+            xhr.send();            
         }
 
         // Call the function to make the requests when the page loads
         window.onload = function () {
             makeRequest('http://localhost:3000/productos/'+id, 'query1Results');
         };
+
+                // Función para hacer la solicitud de añadir al carrito
+                async function addToCart() {
+                    console.log("addToCart function called");
+            const quantity = document.getElementById('quantity').value;
+            const response = await fetch(`http://localhost:3000/addToCart/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ quantity: quantity }),
+            });
+
+            if (response.ok) {
+                alert('Producto añadido al carrito');
+            } else {
+                alert('No se pudo añadir el producto al carrito');
+            }
+        }
     </script>
 </body>
 
