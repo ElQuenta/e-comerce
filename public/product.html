@@ -163,7 +163,7 @@
             console.log("addToCart function called");
             const quantity = document.getElementById('quantity').value;
             const response = await fetch(`http://localhost:3000/addToCart/${id}`, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -172,6 +172,7 @@
 
             if (response.ok) {
                 alert('Producto añadido al carrito');
+                window.location.replace(`/index.html?user=${parametros.user}`);
             } else {
                 alert('No se pudo añadir el producto al carrito');
             }

@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 app.get('/categorias', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM categoria');
-    console.log(result)
     res.json(result);
   } catch (error) {
     console.error('Error al obtener categorías:', error);
@@ -24,7 +23,6 @@ app.get('/categorias', async (req, res) => {
 app.get('/catalogo-perros', async (req, res) => {
   try {
     const result = await db.query('SELECT id_producto, nombre_producto, url FROM producto where id_categoria = 1');
-    console.log(result)
     res.json(result);
   } catch (error) {
     console.error('Error al obtener categorías:', error);
@@ -34,7 +32,6 @@ app.get('/catalogo-perros', async (req, res) => {
 app.get('/catalogo-gatos', async (req, res) => {
   try {
     const result = await db.query('SELECT id_producto, nombre_producto, url FROM producto where id_categoria = 2');
-    console.log(result)
     res.json(result);
   } catch (error) {
     console.error('Error al obtener categorías:', error);
@@ -45,7 +42,6 @@ app.get('/productos/:id', async (req, res) => {
   const productId = req.params.id;
   try {
     const result = await db.query('SELECT * FROM producto where id_producto = '+productId);
-    console.log(result)
     res.json(result);
   } catch (error) {
     console.error('Error al obtener categorías:', error);
@@ -54,7 +50,6 @@ app.get('/productos/:id', async (req, res) => {
 });
 
 app.post("/users", async(req,res) => {
-  console.log(req.body);
   const { nombre, apellido, correoelectronico, contrasena} = req.body
   const query = `INSERT INTO usuario (nombre, apellido, contrasena, correoelectronico)
                  VALUES ('${nombre}', '${apellido}', '${contrasena}', '${correoelectronico}')`;
@@ -77,18 +72,17 @@ app.post("/login", async(req,res) => {
 });
 
 
-app.post("/addToCart/:id", async (req, res) => {
+app.put("/addToCart/:id", async (req, res) => {
   const productId = parseInt(req.params.id);
-  const { quantity } = parseInt(req.body);
-
+  const { quantity } = req.body;
   try {
-      const product = await db.query('SELECT * FROM producto WHERE id_producto = $1', [productId]);
+      const product = await db.query(`SELECT * FROM producto WHERE id_producto = ${productId}`);
       if (!product || product[0].stock < quantity) {
           return res.status(400).json({ message: 'No hay suficiente stock' });
       }
 
       // Restar la cantidad del stock en la base de datos
-      await db.query('UPDATE producto SET stock = stock - $1 WHERE id_producto = $2', [(quantity), productId]);
+      await db.query(`UPDATE producto SET stock = stock - ${quantity} WHERE id_producto = ${productId}`);
 
       res.status(200).json({ message: 'Producto añadido al carrito' });
   } catch (error) {
